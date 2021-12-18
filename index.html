@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multiplication calculator</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* flex-direction: column; */
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+        height: 100vh;
+      }
+
+      @keyframes gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      div {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+      #main {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        border: 2px solid rgb(32, 28, 28);
+        border-radius: 10px 10px 0px 0px;
+        width: 450px;
+        height: 400px;
+        justify-content: center;
+        background: linear-gradient(-45deg, #02aabd, #00cdac);
+      }
+      #result {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        border: 2px solid rgb(32, 28, 28);
+        border-radius: 0px 0px 10px 10px;
+        width: 450px;
+        height: 200px;
+        padding-top: 10px;
+        font-size: 15px;
+        font-weight: bold;
+        background: linear-gradient(-45deg, #02aabd, #00cdac);
+      }
+      input {
+        height: 30px;
+        padding: 5px;
+        cursor: pointer;
+      }
+      button {
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: bold;
+        height: 40px;
+        width: 90px;
+        border-radius: 20px;
+      }
+      button:hover {
+        color: coral;
+        background-color: rgb(7, 102, 102);
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div id="main">
+        <h2>Let's Multiply 3 Number's</h2>
+        1st Number :
+        <input type="number" id="num1" placeholder="Enter here..." /><br />
+        2nd Number:
+        <input type="number" id="num2" placeholder="Enter here..." /><br />
+        3rd Number:
+        <input type="number" id="num3" placeholder="Enter here..." /><br />
+
+        <button>Multiply</button>
+        <hr />
+      </div>
+
+      <div id="result">The Result is :</div>
+    </div>
+
+    <script>
+      function multiply(num1) {
+        return function xyz(num2) {
+          return function pqr(num3) {
+            return num1 * num2 * num3;
+          };
+        };
+      }
+
+      document.querySelector("button").addEventListener("click", () => {
+        let num1 = document.getElementById("num1").value;
+        let num2 = document.getElementById("num2").value;
+        let num3 = document.getElementById("num3").value;
+
+        let x = multiply(num1)(num2)(num3);
+        console.log(x);
+
+        let h1 = document.createElement("h1");
+        h1.innerText = x;
+        document.getElementById("result").appendChild(h1);
+        document.getElementById("result").style.display = "flex";
+      });
+    </script>
+  </body>
+</html>
